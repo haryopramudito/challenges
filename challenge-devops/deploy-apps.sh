@@ -17,17 +17,6 @@ else
                 export KUBECONFIG=~/.kube/config_$ENV
         }
 
-        deploy_db()
-        {
-                cd $HELM_PATH/patroni
-                if [ "$ENV" = "prod" ]; then
-                       helm upgrade --install --atomic --timeout 30s --values values-$ENV.yaml --namespace  $NAMESPACE patroni . 
-
-                else
-                        helm upgrade --install --atomic --timeout 30s --values values-$ENV.yaml --namespace  $NAMESPACE patroni .
-                fi
-        }
-
                 deploy_apps()
         {
                 cd $HELM_PATH/opn-devops
@@ -35,17 +24,13 @@ else
                          helm upgrade --install --atomic --timeout 30s --values values-$ENV.yaml $NAMESPACE opn-devops . 
 
                 else
-                        helm upgrade --install --atomic --timeout 30s --values values-$ENV.yaml --namespace  $NAMESPACE opn-devops . 
+                        helm upgrade --install --atomic --timeout 2m0s --values values-$ENV.yaml --namespace  $NAMESPACE opn-devops . 
                 fi
         }
 
         echo "define Environment Variables:"
         echo =================================
         define_env
-        echo ""
-        echo "Deploy DB Using Helm Chart"
-        echo =================================
-        #deploy_db
         echo ""
         echo "Deploy Apps Using Helm Chart"
         echo =================================
