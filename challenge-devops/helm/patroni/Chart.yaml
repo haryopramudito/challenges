@@ -1,0 +1,10 @@
+apiVersion: v1
+appVersion: 1.5-p5
+deprecated: true
+description: 'DEPRECATED Highly available elephant herd: HA PostgreSQL cluster.'
+home: https://github.com/zalando/patroni
+name: patroni
+sources:
+- https://github.com/zalando/patroni
+- https://github.com/zalando/spilo
+version: 0.16.3

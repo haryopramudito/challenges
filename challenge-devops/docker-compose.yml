@@ -1,0 +1,16 @@
+version: '3'
+services:
+        #  db:
+        #    image: postgres:9.6-alpine
+        #    volumes:
+        #      - ./tmp/db:/var/lib/postgresql/data
+        #   environment:
+        #      POSTGRES_PASSWORD: dr2711hp
+        #      POSTGRES_DB: development
+        #    ports:
+        #      - "5432:5432"
+  web:
+    build: .
+    image: haryopramudito/opn-devops:patroni
+    ports:
+      - "3000:3000"
